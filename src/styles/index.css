@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+@layer components {
+  .container {
+    @apply w-full px-8 lg:p-0 lg:w-3/4 m-auto;
+  }
+  /*   Span and a tags */
+  .span {
+    @apply text-[12px] font-semibold text-primary-gray;
+  }
+  .a {
+    @apply text-[15px] font-[400] text-red-gray;
+  }
+
+  /* Buttons */
+  .batch-icon {
+    @apply w-4 h-4;
+  }
+
+  .discount-btn {
+    @apply px-4 py-2 bg-primary text-white text-xs font-semibold;
+  }
+  .feature-btn {
+    @apply px-4 py-2 bg-primary-green text-white text-xs font-semibold;
+  }
+  .slider-btn {
+    @apply w-16 h-16 bg-primary text-white flex items-center justify-center;
+  }
+}
+
+.primary-btn {
+  font-size: 16px;
+  padding: 12px 30px;
+  line-height: 24px;
+  display: inline-flex;
+  border-radius: 0;
+  font-weight: 500;
+  position: relative;
+  border: 1px solid #000;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  transition: all 0.2s;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+}
+.primary-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 200%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Add transition for both properties */
+  opacity: 0;
+  border-right: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.primary-btn:hover:after {
+  right: 100%;
+  opacity: 1;
+}
+
+.secondary-btn {
+  font-size: 16px;
+  padding: 12px 30px;
+  line-height: 24px;
+  display: inline-flex;
+  border-radius: 0;
+  font-weight: 500;
+  position: relative;
+  border: 1px solid #000;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  transition: all 0.2s;
+  justify-content: center;
+  background: transparent;
+  color: #000;
+}
+.secondary-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 200%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Add transition for both properties */
+  opacity: 0;
+  border-right: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.secondary-btn:hover {
+  background-color: #000;
+  color: #fff;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Add transition for both properties */
+}
+.secondary-btn:hover:after {
+  right: 100%;
+  opacity: 1;
+}
+
+/*    Navbar   */
+.menu-container {
+  background-color: #24262b;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  z-index: 100;
+  margin-top: 10px;
+}
+.menu-container.open {
+  opacity: 1;
+  transform: translateX(0);
+}
+.menu-container.closed {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+/* Add the sticky class to make the header sticky */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 4;
+  transition: background-color 0.3s ease;
+}
+/* Add the animation class when scrolling down */
+.header.scrolled {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 0.5s ease;
+  z-index: 100;
+}
+
+.active-link {
+  color: #0d775e !important;
+}
+/* Keyframes for fadeInDown animation */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* product  */
+.product-btn {
+  padding: 5px 11px;
+  font-size: 12px;
+}
+.product .images {
+  position: relative;
+  overflow: hidden;
+}
+
+.product.card .overlay {
+  opacity: 0;
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+}
+
+.product.card:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*  modal-overlay */
+.modal-overlay {
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 500px;
+  background-color: white;
+  z-index: 50001;
+}
+.overlay-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 50000;
+}
+.slideproduct .images {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+
+/* testimonials */
+.testimonials {
+  position: relative;
+  background-image: url("./images/hero/bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+}
+.testimonials::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70vh;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.slick-dots {
+  margin-bottom: 90px !important;
+}
+.slick-dots li {
+  width: 69px !important;
+}
+.slick-slider {
+  z-index: 1;
+}
+/* Cart Model */
+.cartmodel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100vh;
+  background-color: white;
+  z-index: 1000000 !important;
+  animation: slideIn 0.3s forwards; /* Slide in animation */
+  transform: translateX(100%); /* Start offscreen */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); /* Start offscreen */
+  }
+  to {
+    transform: translateX(0); /* Slide in */
+  }
+}
+
+.cartmodel.closing {
+  animation: slideOut 0.3s forwards; /* Slide out animation */
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0); /* Slide in */
+  }
+  to {
+    transform: translateX(100%); /* Slide out */
+  }
+}
+
+.cartoverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999999 !important;
+}
+.line-container {
+  display: flex;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.line.active {
+  background-color: #0d775e;
+}
